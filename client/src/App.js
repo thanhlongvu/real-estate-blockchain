@@ -21,6 +21,8 @@ class App extends Component {
       Contract.setProvider(web3.currentProvider);
       const instance = await Contract.deployed();
 
+      console.log(instance);
+
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instance }, this.runExample);
@@ -37,7 +39,7 @@ class App extends Component {
     const { accounts, contract } = this.state;
 
     // Stores a given value, 5 by default.
-    await contract.set(100, { from: accounts[0] });
+    await contract.set(10, { from: accounts[0] });
 
     // Get the value from the contract to prove it worked.
     const response = await contract.get();
